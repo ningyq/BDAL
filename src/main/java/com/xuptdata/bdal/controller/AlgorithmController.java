@@ -3,7 +3,7 @@ package com.xuptdata.bdal.controller;
 import com.github.pagehelper.PageInfo;
 import com.xuptdata.bdal.entity.Algorithm;
 import com.xuptdata.bdal.entity.Result;
-import com.xuptdata.bdal.service.impl.AlgorithmServiceImpl;
+import com.xuptdata.bdal.service.AlgorithmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/algorithm")
 public class AlgorithmController {
     @Autowired
-    private AlgorithmServiceImpl algorithmService;
+    private AlgorithmService algorithmService;
 
     /**
      * 查询所有算法
@@ -23,9 +23,9 @@ public class AlgorithmController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public Result getAll(int pageNum, int pageSize){
-        PageInfo pageInfo = algorithmService.getAll(pageNum,pageSize);
+        PageInfo pageInfo = algorithmService.getAll(pageNum, pageSize);
         return new Result("success", "查询成功", pageInfo);
     }
 
@@ -34,10 +34,10 @@ public class AlgorithmController {
      * @param id
      * @return
      */
-    @GetMapping("/getOne")
-    public Result getOne(int id){
+    @GetMapping("/one")
+    public Result getOne(Integer id){
         Algorithm algorithm = algorithmService.getOne(id);
-        return new Result("success","查询成功",algorithm);
+        return new Result("success", "查询成功", algorithm);
     }
 
     /**
@@ -47,9 +47,9 @@ public class AlgorithmController {
      * @param title
      * @return
      */
-    @GetMapping("/getTitle")
-    public Result getTitle(int pageNum, int pageSize,String title){
-        PageInfo pageInfo = algorithmService.getTitle(pageNum,pageSize,title);
+    @GetMapping("/title")
+    public Result getTitle(int pageNum, int pageSize, String title){
+        PageInfo pageInfo = algorithmService.getTitle(pageNum, pageSize, title);
         return new Result("success", "查询成功", pageInfo);
     }
 
@@ -60,9 +60,9 @@ public class AlgorithmController {
      * @param classify
      * @return
      */
-    @GetMapping("/getClassify")
-    public Result getClassify(int pageNum, int pageSize,String classify){
-        PageInfo pageInfo = algorithmService.getTitle(pageNum,pageSize,classify);
+    @GetMapping("/classify")
+    public Result getClassify(int pageNum, int pageSize, String classify){
+        PageInfo pageInfo = algorithmService.getClassify(pageNum, pageSize, classify);
         return new Result("success", "查询成功", pageInfo);
     }
 
@@ -73,8 +73,11 @@ public class AlgorithmController {
      */
     @PostMapping("/insert")
     public Result insert(Algorithm algorithm){
-        int ret = algorithmService.insert(algorithm);
-        return new Result("success","增加成功",algorithm);
+        int result = algorithmService.insert(algorithm);
+        if (result == 0){
+            return new Result("error", "增加失败");
+        }
+        return new Result("success", "增加成功");
     }
 
 
@@ -85,8 +88,11 @@ public class AlgorithmController {
      */
     @PutMapping("/update")
     public Result update(Algorithm algorithm){
-        int ret = algorithmService.update(algorithm);
-        return new Result("success","更新成功",algorithm);
+        int result = algorithmService.update(algorithm);
+        if (result == 0){
+            return new Result("error", "更新失败");
+        }
+        return new Result("success", "更新成功");
     }
 
     /**
@@ -95,13 +101,11 @@ public class AlgorithmController {
      * @return
      */
     @PutMapping("/delete")
-    public Result delete(int id){
-        int ret = algorithmService.delete(id);
-        return new Result("success","删除成功",ret);
+    public Result delete(Integer id){
+        int result = algorithmService.delete(id);
+        if (result == 0){
+            return new Result("error", "删除失败");
+        }
+        return new Result("success", "删除成功");
     }
-
-
-
-
-
 }
