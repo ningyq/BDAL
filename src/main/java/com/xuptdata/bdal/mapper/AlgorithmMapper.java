@@ -1,10 +1,12 @@
 package com.xuptdata.bdal.mapper;
 
 import com.xuptdata.bdal.entity.Algorithm;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
+@Mapper
 public interface AlgorithmMapper {
     @Select("select * from algorithm")
     List<Algorithm> selectList();

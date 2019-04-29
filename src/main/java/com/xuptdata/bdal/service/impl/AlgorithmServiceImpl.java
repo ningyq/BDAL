@@ -49,12 +49,12 @@ public class AlgorithmServiceImpl implements AlgorithmService {
     }
 
     @Override
-    public int delete(int id) {
+    public int delete(Integer id) {
         return algorithmMapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public Algorithm getOne(int id) {
+    public Algorithm getOne(Integer id) {
         return algorithmMapper.selectByPrimaryKey(id);
     }
 
