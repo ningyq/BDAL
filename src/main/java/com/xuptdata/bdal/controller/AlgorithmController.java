@@ -34,7 +34,7 @@ public class AlgorithmController {
      * @param id
      * @return
      */
-    @GetMapping("/one")
+    @GetMapping("/id")
     public Result getOne(Integer id){
         Algorithm algorithm = algorithmService.getOne(id);
         return new Result("success", "查询成功", algorithm);
