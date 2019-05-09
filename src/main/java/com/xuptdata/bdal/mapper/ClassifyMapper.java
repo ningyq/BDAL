@@ -17,6 +17,4 @@ public interface ClassifyMapper extends BaseMapper<Classify> {
 
     @Select("select * from classify where value like concat('%', #{value}, '%')")
     Classify selectByValue(String title);
-
-
 }

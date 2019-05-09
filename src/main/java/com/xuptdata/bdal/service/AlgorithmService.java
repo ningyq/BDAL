@@ -3,8 +3,6 @@ package com.xuptdata.bdal.service;
 import com.github.pagehelper.PageInfo;
 import com.xuptdata.bdal.entity.Algorithm;
 
-
-
 /**
  * @Author: slicing
  * @Date: 2019/4/25 19:28

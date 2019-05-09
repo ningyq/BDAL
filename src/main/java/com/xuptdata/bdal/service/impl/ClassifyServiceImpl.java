@@ -16,6 +16,7 @@ import java.util.List;
 public class ClassifyServiceImpl implements ClassifyService {
     @Autowired
     private ClassifyMapper classifyMapper;
+
     @Override
     public List<Classify> getAll() {
         return classifyMapper.selectAll();
@@ -33,7 +34,8 @@ public class ClassifyServiceImpl implements ClassifyService {
 
     @Override
     public int insert(Classify classify) {
-        return classifyMapper.insert(classify);
+        classify.setUrl("/classify/" + classify.getValue());
+        return classifyMapper.insertSelective(classify);
     }
 
     @Override

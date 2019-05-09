@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date: 2019/4/25 19:47
  */
 @RestController
-@RequestMapping("/algorithm")
+@RequestMapping("/api/algorithm")
 public class AlgorithmController {
     @Autowired
     private AlgorithmService algorithmService;
