@@ -17,7 +17,7 @@ public interface AlgorithmMapper {
     @Select("select * from algorithm where classify like concat('%', #{classify}, '%')")
     List<Algorithm> selectByClassify(String classify);
 
-    @Select("select * from algorithm where context like concat('%', *{context},'%')")
+    @Select("select * from algorithm where context like concat('%', #{context},'%')")
     List<Algorithm> selectByContext(String context);
 
     int deleteByPrimaryKey(Integer id);

@@ -13,7 +13,6 @@ spring:
     restart:
       enabled: true
       additional-paths: src/main/java
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.xuptdata.bdal.entity
@@ -42,3 +41,6 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+
+server:
+  port: 8081
