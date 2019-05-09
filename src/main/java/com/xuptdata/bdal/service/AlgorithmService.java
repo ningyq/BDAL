@@ -16,6 +16,8 @@ public interface AlgorithmService {
 
     PageInfo getClassify(int pageNum, int pageSize, String classify);
 
+    PageInfo getContext(int pageNum, int pageSize, String context);
+
     int insert(Algorithm algorithm);
 
     int delete(Integer id);

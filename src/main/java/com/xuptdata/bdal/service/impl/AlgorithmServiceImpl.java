@@ -44,6 +44,14 @@ public class AlgorithmServiceImpl implements AlgorithmService {
     }
 
     @Override
+    public PageInfo getContext(int pageNum, int pageSize, String context) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Algorithm> ret = algorithmMapper.selectByContext(context);
+        PageInfo pageInfo = new PageInfo(ret);
+        return pageInfo;
+    }
+
+    @Override
     public int insert(Algorithm algorithm) {
         return  algorithmMapper.insertSelective(algorithm);
     }
