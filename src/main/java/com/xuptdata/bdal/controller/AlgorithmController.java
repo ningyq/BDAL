@@ -66,6 +66,20 @@ public class AlgorithmController {
         return new Result("success", "查询成功", pageInfo);
     }
 
+
+    /**
+     *根据内容查询
+     * @param pageNum
+     * @param pageSize
+     * @param context
+     * @return
+     */
+    @GetMapping("/context")
+    public Result getContext(int pageNum, int pageSize, String context){
+        PageInfo pageInfo = algorithmService.getContext(pageNum, pageSize, context);
+        return new Result("success", "查询成功", pageInfo);
+    }
+
     /**
      * 增加数据
      * @param algorithm
